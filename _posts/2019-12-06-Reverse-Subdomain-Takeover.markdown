@@ -46,8 +46,12 @@ for i in {1..10}; do curl -s --request POST --url “https://api.securitytrails.
 Each result page contains 100 records and there are 999 records in total, that’s why this loops 10 times. Of course, this technique isn’t bound to SurveyGizmo. We can use any service that lets its users point a cname at a catchall domain. 
 
 We can find more with google using dorks like:
-    `“Custom domain” +cname`
-    `“Branded domain” +cname`
+
+`“Custom domain” +cname`
+
+or 
+
+`“Branded domain” +cname`
 
 Once you’ve found a service that uses a catchall domain, look it up on the securitytrails website. If there’s a long enough list of results, use the API to get the full collection. Make sure to run the loop enough times to get all pages. 
 
