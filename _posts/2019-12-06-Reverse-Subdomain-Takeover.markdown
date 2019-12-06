@@ -25,9 +25,13 @@ If the service hosts each users content at some file path but still wants to off
 
 In order for a service to be vulnerable to this attack it will need to have a catchall domain, like `custom.jobthing.io`, for customers to point CNAMEs at. Zendesk is an example of a service that allows you to use a custom domain, but doesn’t meet our criteria. SurveyGizmo is an example of one that does meet our criteria. Here’s what I mean: 
 
-![zendesk]({{ site.url }}/assets/zendesk.png, "zendesk")
+Zendesk:
 
-![surveygizmo]({{ site.url }}/assets/sgizmo.png, "surveygizmo")
+![zendesk]({{ site.url }}/assets/zendesk.png)
+
+SurveyGizmo:
+
+![surveygizmo]({{ site.url }}/assets/sgizmo.png)
 
 Both of these services allow you to point a CNAME at them, but zendesk will have you point it at your unique zendesk url, like `legitimatewebsite.zendesk.com`. SurveyGizmo will have you point your CNAME at a catchall domain called `privatedomain.sgizmo.com`. The key here is that all SurveyGizmo customers are pointing their CNAMEs at that one address. This is what we’ll exploit.
 
