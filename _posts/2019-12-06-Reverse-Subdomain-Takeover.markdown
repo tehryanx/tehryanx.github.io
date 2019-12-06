@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A Novel approach to Subdomain Takeover"
+title:  "A Novel Approach to Subdomain Takeover"
 date:   2019-12-06
 categories: bugbounty
 ---
