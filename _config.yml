@@ -10,7 +10,7 @@ sass:
   sass_dir: _sass
 plainwhite:
   name: ~ryan
-  tagline: Currently violating causality in your light cone
+  tagline: violating causality in your light cone
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
 
