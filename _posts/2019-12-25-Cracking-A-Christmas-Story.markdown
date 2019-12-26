@@ -131,7 +131,7 @@ Just looking at this I immediately knew that the first word was MEET. The only w
 --|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 M | E | E | T | / | T | O | M | O | R | R | O | W | / | I | N | / |   | I |   | O | / |   |   | R | N 
 
-MEET TOMORROW IN something something. The next word is "_I_O", and we know it has no repeating letters as the numbers (9 20 14 24) are all different. In order to find candidate words, I grepped the dataset using the pattern "ABCD" (for four letter words with no repeating patterns), then grepped those results for words that have the I and O in the proper positions, and none of the letters we've already discovered in the remaining positions. Searching the shorter wordlist returned no results, so I went back to the much larger dictionary file. 
+MEET TOMORROW IN something something. The next word is "_I_O", and we know it has no repeating letters as the numbers (9 20 14 24) are all different. In order to find candidate words, I grepped the dataset using the pattern "ABCD" (for four letter words with no repeating letters), then grepped those results for words that have the I and O in the proper positions, and none of the letters we've already discovered in the remaining positions. Searching the shorter wordlist returned no results, so I went back to the much larger dictionary file. 
 
 ![make_pattern]({{ site.url }}/assets/loa6.png)
 
@@ -145,7 +145,7 @@ Looking over all the results I became fairly confident that the message decoded 
 --|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
   |   | T |   | B |   | M |   | S |   |   |   |   | L | N | E |   |   | Y | I | W |   | R | O |   |   
 
-The next step was to move on to the second secret message to see if we could extract more of the alphabet. Fortunately, I didn't have to start from scratch this time. I'd already recovered a lot, but it was using the Y-19 key. The second message was encrypted using the o-21 key. Because we're using a circular shift cipher, we should be able to simply shift our recovered alphabet to the O-21 position and use it to decode the next message. We've already discovered that in the Y-19 configuration, O is in the 24th position. We just need to shift the alphabet to the left (or rather, rotate the decoder pin counter-clockwise) three positions. 
+The next step was to move on to the second secret message to see if I could extract more of the alphabet. Fortunately, I didn't have to start from scratch this time. I'd already recovered a lot, but it was using the Y-19 key. The second message was encrypted using the o-21 key. Because we're using a circular shift cipher, we should be able to simply shift our recovered alphabet to the O-21 position and use it to decode the next message. We've already discovered that in the Y-19 configuration, O is in the 24th position. We just need to shift the alphabet to the left (or rather, rotate the decoder pin counter-clockwise) three positions. 
 
 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11| 12| 13| 14| 15| 16| 17| 18| 19| 20| 21| 22| 23| 24| 25| 26
 --|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
