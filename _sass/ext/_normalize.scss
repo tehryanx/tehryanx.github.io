@@ -420,7 +420,7 @@ optgroup {
 table {
     table-layout:fixed;
     border-collapse: separate;
-    border-spacing: 3;
+    border-spacing: 3px;
     border: 1px solid #fff;
     font-family: monospace;
 }
@@ -431,6 +431,6 @@ th {
     min-width: 10px;
     background-color: #e2e2e2;
     border: 1px solid #ffffff;
-    padding: 4;
+    padding: 6px;
     
 }
