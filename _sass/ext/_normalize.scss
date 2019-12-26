@@ -418,6 +418,7 @@ optgroup {
 //
 
 table {
+    table-layout:fixed;
     border-collapse: separate;
     border-spacing: 3;
     border: 1px solid #fff;
@@ -426,6 +427,7 @@ table {
 
 td,
 th {
+    
     min-width: 10px;
     background-color: #e2e2e2;
     border: 1px solid #ffffff;
