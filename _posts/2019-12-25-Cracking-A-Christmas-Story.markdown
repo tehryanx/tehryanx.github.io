@@ -2,10 +2,8 @@
 layout: post
 title:  "Cracking a Christmas Story"
 date:   2019-12-25
-categories: bugbounty
+categories: puzzles
 ---
-
-### Cracking a Christmas Story
 
 *There's a scene in the classic Christmas movie "A Christmas Story" where nine-year-old Ralphie uses a secret decoder pin to decode a secret message from his favorite radio program Little Orphan Annie.*
 
@@ -25,7 +23,7 @@ ep | key | secret message
 10 | O21 | `24 12 12 17 13 / 14 17 6 17 26 6 / 15 24 22 13 6 / 13 4 1 21 20 17 19 4`
 12 | A13 | `19 5 21 15 2 9 6 10 8 21 / 13 20 20 6 23 2 1 15 / 13 15 / 17 9 6 23 14 2`
 
-Having seen the decoder pin in the movie, I assumed this was some kind of substitution cipher. This is where every letter in the regular alphabet is substituted with a letter from an encrypting alphabet. For example, Imagine the encrypting alphabet is just a reversed version of the normal alphabet. Anywhere you'd normally use an A, you'd instead use a Z. B would be replaced with Y, C with X, etc. ABC would therefore encrypt to ZYX. In the Little Orphan Annie cipher, numbers are used instead of letters, but they appear to be in the range 1-26 so it's likely that the numbers just pair with the letters of the alphabet. In or example, rather than ABC encrypting to ZYX it would encrypt to 26 25 24.
+Having seen the decoder pin in the movie, I assumed this was some kind of substitution cipher. This is where every letter in the regular alphabet is substituted with a letter from an encrypting alphabet. For example, Imagine the encrypting alphabet is just a reversed version of the normal alphabet. Anywhere you'd normally use an A, you'd instead use a Z. B would be replaced with Y, C with X, etc. ABC would therefore encrypt to ZYX. In the Little Orphan Annie cipher, numbers are used instead of letters, but they appear to be in the range 1-26 so it's likely that the numbers just pair with the letters of the alphabet. In our example, rather than ABC encrypting to ZYX it would encrypt to 26 25 24.
 
 Having never actually played with one of these pins, I had to make some assumptions about how they work. Picture an analog clock-face with 26 numbered places rather than 12. Now imagine a smaller disk with the 26 letters of the alphabet around its circumference, each letter lining up with a number in the outer clock-face. The disk can be rotated so that any letter can align with any number. In it's base position, the A aligns with 1, B with 2, C with 3, etc. The central disk can easily be rotated so that A aligns with 2 and so on. This is how I assume the pin works based on what I could see in the film. 
 
