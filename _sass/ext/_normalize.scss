@@ -420,12 +420,14 @@ optgroup {
 table {
     border-collapse: separate;
     border-spacing: 3;
-    border: 1px solid #121212;
+    border: 1px solid #fff;
+    font-family: monospace;
 }
 
 td,
 th {
-    border: 1px solid #121212;
+    background-color: #e2e2e2;
+    border: 1px solid #ffffff;
     padding: 4;
     
 }
