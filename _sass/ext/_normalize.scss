@@ -419,11 +419,13 @@ optgroup {
 
 table {
     border-collapse: separate;
-    border-spacing: 2;
-    border: 1px solid #f2f2f2;
+    border-spacing: 3;
+    border: 1px solid #e2e2e2;
 }
 
 td,
 th {
-    padding: 2;
+    border: 1px solid #e2e2e2
+    padding: 4;
+    
 }
