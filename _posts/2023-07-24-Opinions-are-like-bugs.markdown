@@ -82,7 +82,7 @@ Even better, the html parsers in modern browsers agree with the pdf generator. O
 
 At first glance, this seemed like a bug in the html parser that Loofah is using, but after some investigation it turned out to be something much worse: Competing specs with different opinions. 
 
-![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/c01b708a-ce66-4ec3-be9e-a7ea5af324d2)
+![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/c57b60f0-9e28-496b-b6e5-00062a7daba1)
 
 ---
 
