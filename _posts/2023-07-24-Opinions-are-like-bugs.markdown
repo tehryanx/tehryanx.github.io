@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Opinions are like Bugs - Every Spec has one."
-date:   2019-12-06
+date:   2023-07-24
 categories: bugbounty
 ---
 
