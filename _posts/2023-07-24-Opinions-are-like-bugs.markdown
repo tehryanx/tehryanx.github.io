@@ -25,9 +25,9 @@ All of the inputs I could control were validated against a strict allowlist of s
 
 I spent some time mapping out allowed tags and attributes, but the results didn't look very promising. After a lot of testing I had exhausted all obvious options, but I was so close I couldn't stop yet. One final possibility was still tickling my brain. 
 
-I wasn't totally sure what was being used to scrub my input, and I wanted to thoroughly test the sanitizer before calling it complete. I knew it was a ruby on rails application, and that rails used Loofah for scrubbing out unwanted input. I pulled open rails console and starting pushing on Loofah in every direction trying to find interesting behaviour. Of all the tags that were allowed by the application I was testing, the one that stood out the most was the HTML comment tag `<!-- -->`. I wondered if it might be possible to leverage a parsing differential such that loofah would see the iframe as a comment, but the pdf generator would not. 
+I wasn't totally sure what was being used to scrub my input, and I wanted to thoroughly test the sanitizer before calling it complete. I knew it was a ruby on rails application, and that rails used Loofah for scrubbing out unwanted input. I pulled open rails console and starting pushing on Loofah in every direction trying to find interesting behaviour. Of all the tags that were allowed by the application I was testing, the one that stood out the most was the HTML comment tag `<!-- -->`. I wondered if it might be possible to leverage a parsing differential such that loofah would see the iframe as being inside a comment, but the pdf generator would not. 
 
-The test was fairly simple to implement. I generated a wordlist using the following oneliner, and used this list in my report. I expected most of them to be considered comments by the PDF generator, but if any got passed I should get a nudge on my burp collaborator. 
+The test was fairly simple to implement. I generated a wordlist using the following oneliner, and generated a pdf report containing it. I expected most of them to be considered comments by the PDF generator, but if any of the iframes were rendered I should get a nudge on my burp collaborator. 
 
 ```
 ruby -e "0.upto(65535) {|i| puts '<\!--' << i << '<iframe src=burpcollap/?id=' << i << '></iframe>-->'}"
@@ -73,7 +73,7 @@ irb(main):009:0> html = "<h1>iframe test</h1><!--><iframe></iframe>-->"
 irb(main):010:0> Loofah.fragment(html).scrub!(iframe_scrubber).to_s
 => "<h1>iframe test</h1><!--><iframe></iframe>-->"
 ```
-As expected, Loofah see's the iframe tag in the last example as being safely tucked inside a comment. However, when this exact same code is passed to the pdf generator, the iframe is rendered. This means that whatever is parsing the HTML in the pdf generator parses this in such a way that the iframe tag is not inside the comment. 
+As expected, Loofah see's the iframe tag in both of the the last two examples as being safely tucked inside a comment. However, when this exact same code is passed to the pdf generator, the iframe is rendered. This means that whatever is parsing the HTML in the pdf generator parses this in such a way that the iframe tag is not inside the comment. 
 
 Even better, the html parsers in modern browsers agree with the pdf generator. Open a page with this html in chrome, firefox, edge, etc, and you'll see a rendered iframe:
 ```
