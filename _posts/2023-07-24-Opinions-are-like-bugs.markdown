@@ -5,11 +5,9 @@ date:   2023-07-24
 categories: bugbounty
 ---
 
-Opinions are like Bugs - Every Spec has one. 
-
 *When two specifications have differing opinions on how something should be parsed: here be dragons.*
 
-This writeup is about a bug I first discovered over a year go and have found a number of times since. There's nothing particularly novel about the vulnerability itself, but I think there's an interesting lesson in here about why it exists, and about where to look for other bugs that exist for the same reason. 
+This writeup is about a bug I first discovered over a year ago and have found a number of times since. There's nothing particularly novel about the vulnerability itself, but I think there's an interesting lesson in here about why it exists, and about where to look for other bugs that exist for the same reason. 
 
 ---
 
