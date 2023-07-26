@@ -38,7 +38,7 @@ ruby -e "0.upto(65535) {|i| puts '<\!--' << i << '<iframe src=burpcollap/?id=' <
 ...
 ```
 
-To my surprise, I got a hit on `burpcollab/?id=62`, the codepoint for the greater-than character `>`. This allowed me to bypass the sanitizer, inject an iframe, steal creds, and escalate to RCE. But... WHY?
+To my surprise, I got a hit on `burpcollab/?id=62`, the codepoint for the greater-than character `>`. This allowed me to bypass the sanitizer, which meant I could inject an iframe, steal the AWS creds from the metadata instance, and escalate to RCE. I still wanted to understand what was happening to cause the two HTML parsers to behave differently. 
 
 ![image](https://media4.giphy.com/media/zrmTqopWm4W5cPg8Ah/giphy.gif?cid=ecf05e47y5ni6z9jd9m44cw1nvjr16cx3cpbw5zi8tmblrgl&ep=v1_gifs_search&rid=giphy.gif&ct=g)
 
