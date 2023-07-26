@@ -25,7 +25,7 @@ I spent some time mapping out allowed tags and attributes, but the results didn'
 
 I wasn't totally sure what was being used to scrub my input, and I wanted to thoroughly test the sanitizer before calling it complete. I knew it was a ruby on rails application, and that rails made Loofah available for sanitizing HTML input. I pulled open rails console and starting pushing on Loofah in every direction trying to find interesting behaviour. Of all the tags that were allowed by the application I was testing, the one that stood out the most was the HTML comment tag `<!-- -->`. I wondered if it might be possible to leverage a parsing differential such that loofah would see the iframe as being inside a comment, but the pdf generator would not. 
 
-The test was fairly simple to implement. I generated a wordlist using the following oneliner, and generated a pdf report containing it. I expected most of them to be considered comments by the PDF generator, but if any of the iframes were rendered I should get a nudge on my burp collaborator. 
+The test was fairly simple to implement. I generated a wordlist using the following oneliner, and generated a pdf report containing that wordlist. I expected most of them to be considered comments by the PDF generator, but if any of the iframes were rendered I should get a nudge on my burp collaborator. 
 
 ```
 ruby -e "0.upto(65535) {|i| puts '<\!--' << i << '<iframe src=burpcollap/?id=' << i << '></iframe>-->'}"
