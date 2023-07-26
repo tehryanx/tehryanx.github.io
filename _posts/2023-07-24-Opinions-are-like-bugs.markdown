@@ -90,21 +90,27 @@ At first glance, this seemed like a bug in the html parser that Loofah is using,
 
 Loofah uses an html parsing framework called Nokogiri, which is built on libxml2. Libxml2 is a very popular xml (and html) parsing library that tries to be compliant with the [W3C html 5 specification](https://www.w3.org/TR/2011/WD-html5-20110405/tokenization.html). The problem is that this library is very old, and pieces of it's parsing functionality are much older than the most recent version of the standard. 
 
-The library's comment parsing functionality, for example, was [implemented in 2000](https://github.com/GNOME/libxml2/blame/75693281389aab047b424d46df944b35ab4a3263/HTMLparser.c#L3455). At that time, the specs guidance for parsing comments was as follows:
-![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/d7da43dd-f4cf-4b26-b143-1cbd3d6a3827)
+The library's comment parsing functionality, for example, was [implemented in 2000](https://github.com/GNOME/libxml2/blame/75693281389aab047b424d46df944b35ab4a3263/HTMLparser.c#L3455). At that time, there wasn't any clear guidance in the standard around how to parse comments. The way the libxml2 authors interpreted the specification resulted in the following steps:
 
-If the tokenizer encountered the opening comment sequence `<!--` it should just consume everything up to the closing comment sequence `-->` and treat everything therein as a comment. This means that, given our sequence `<!-->`, the `>` would be ignored and everything up to `-->` would be a comment. This explains why Loofah saw our iframe as being inside a comment. 
+- the tokenizer encounters the opening comment sequence `<!--` 
+- Move the tokenizer forward until et encounters the closing comment sequence `-->` 
+- treat everything inside as a comment. 
 
-Eventually, the rules changed and as of the 2010 version of the specification the rules for parsing comments were as follows:
+This means that, given our sequence `<!-->`, the `>` would be ignored and everything up to `-->` would be a comment. This explains why Loofah saw our iframe as being inside a comment. 
+
+Eventually, the rules changed and as of the first completed html5 spec published in 2008, the rules for parsing comments were as follows:
 
 - We start in "tag open state," and we encounter an `!`, so we swtich to "markup declaration state"
-![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/36a44f08-c53e-4d79-9556-2d8823927ee0)
+![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/910ae211-55c1-418c-bc4b-e451f3f550c1)
+
 
 - If the next two characters are `--` we switch to `comment start state`
-![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/7f3ed1e9-8d25-441f-982b-4e92039d8412)
+![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/cf9df270-cfb4-4e7b-a16f-372f54112f52)
+
 
 - And finally, if the very next character is `>`, we throw a parse error and switch back to "data state" instead of "comment state".
-![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/c2cc572c-1f43-4982-bd75-ef2d11effbf9)
+![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/3772de46-3a2c-4d2f-97ea-c5abd2a36258)
+
 
 Now, given the sequence `<!-->`, the comment is opened and then immediately closed. Everything following the `>` is outside the comments. This explains why the PDF generator, and modern browsers, render the iframe. 
 
