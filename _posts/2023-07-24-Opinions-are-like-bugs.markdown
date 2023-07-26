@@ -94,7 +94,7 @@ The library's comment parsing functionality, for example, was [implemented in 20
 - Move the tokenizer forward until et encounters the closing comment sequence `-->` 
 - treat everything inside as a comment. 
 
-This means that, given our sequence `<!-->`, the `>` would be ignored and everything up to `-->` would be a comment. This explains why Loofah saw our iframe as being inside a comment. Libxml2 wasn't technically wrong, the authors were following the spec, just not the same spec that our pdf generator and modern browsers. 
+This means that, given our sequence `<!-->`, the `>` would be ignored and everything up to `-->` would be a comment. This explains why Loofah saw our iframe as being inside a comment. Libxml2 wasn't technically wrong, the authors were following the spec, just not the same spec that our pdf generator and modern browsers follow. 
 
 Eventually, the rules changed and as of the first completed html5 spec published in 2008, the rules for parsing comments were as follows:
 
