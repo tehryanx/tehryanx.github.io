@@ -88,13 +88,13 @@ At first glance, this seemed like a bug in the html parser that Loofah is using,
 
 Loofah uses an html parsing framework called Nokogiri, which is built on libxml2. Libxml2 is a very popular xml (and html) parsing library that tries to be compliant with the [W3C html 5 specification](https://www.w3.org/TR/2011/WD-html5-20110405/tokenization.html). The problem is that this library is very old, and pieces of it's parsing functionality are much older than the most recent version of the standard. 
 
-The library's comment parsing functionality, for example, was [implemented in 2000](https://github.com/GNOME/libxml2/blame/75693281389aab047b424d46df944b35ab4a3263/HTMLparser.c#L3455). At that time, there wasn't any clear guidance in the standard around how to parse comments. The way the libxml2 authors interpreted the specification resulted in the following steps:
+The library's comment parsing functionality, for example, was [implemented in 2000](https://github.com/GNOME/libxml2/blame/75693281389aab047b424d46df944b35ab4a3263/HTMLparser.c#L3455). At that time, there wasn't any clear guidance in the standard around how to parse abruptly closed comments like the one in our attack payload. The way the libxml2 authors interpreted the specification resulted in the following steps:
 
 - the tokenizer encounters the opening comment sequence `<!--` 
 - Move the tokenizer forward until et encounters the closing comment sequence `-->` 
 - treat everything inside as a comment. 
 
-This means that, given our sequence `<!-->`, the `>` would be ignored and everything up to `-->` would be a comment. This explains why Loofah saw our iframe as being inside a comment. 
+This means that, given our sequence `<!-->`, the `>` would be ignored and everything up to `-->` would be a comment. This explains why Loofah saw our iframe as being inside a comment. Libxml2 wasn't technically wrong, the authors were following the spec, just not the same spec that our pdf generator and modern browsers. 
 
 Eventually, the rules changed and as of the first completed html5 spec published in 2008, the rules for parsing comments were as follows:
 
