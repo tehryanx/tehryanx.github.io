@@ -77,6 +77,8 @@ NOTE: I reported this behaviour to Ruby last year, but they determined this to n
 
 This means that a url like `///evil.com` given to ruby will return true on `host.nil?`, but when given to a browser will be seen as pointing to `https://evil.com`
 
+![image](https://github.com/tehryanx/tehryanx.github.io/assets/8878295/7b7ffde7-8b21-4f8f-ba5d-060093cb856b)
+
 ---
 
 This was a universal bypass for Rails 7.0's safe-redirect functionality. It has now been patched. 
