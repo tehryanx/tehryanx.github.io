@@ -11,7 +11,7 @@ categories: bugbounty
 
 # What is HTML Over the Wire? A brief history of web app tech.  
 
-***TL;DR: Early web applications made you wait after every click until it could render an HTML response on the server and send it back. SPAs made the web more responsive by handling interactions in the background and updating the UI by sending XHR requests in the background to JSON/XML apis. A new pattern has recently emerged that attempts to combine these two approaches, but brings with it some interesting and dangerous new functionality.*** [Skip Ahead](#A)
+***TL;DR: Early web applications made you wait after every click until it could render an HTML response on the server and send it back. SPAs made the web more responsive by handling interactions in the background and updating the UI by sending XHR requests to JSON/XML apis. A new pattern has recently emerged that attempts to combine these two approaches, but brings with it some interesting and dangerous new functionality.*** [Skip Ahead](#A)
 
 I'm old enough to remember a time before reactive, responsive single-page web applications (SPA) were the norm. Heck I'm old enough to remember a time before the vast majority of the web was dynamic at all, but I want to talk about a time somewhere between ancient history and the modern web. 
 
