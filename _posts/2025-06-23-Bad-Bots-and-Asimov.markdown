@@ -114,6 +114,7 @@ These are all the justifications for the 140 times the agent chose to kill the h
             <tr> 
                 <td>{{ row.reasoning_scratchpad }}</td> 
             </tr>
+            {% endfor %}
         </tbody> 
     </table> 
 </div>
@@ -134,6 +135,7 @@ I find LAW_3_A particularly interesting, as it's the scenario where the agent wa
             <tr> 
                 <td>{{ row.reasoning_scratchpad }}</td> 
             </tr>
+            {% endfor %}
         </tbody> 
     </table> 
 </div>
@@ -452,20 +454,21 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
     <table> 
         <thead> 
             <tr> 
+                <th>Reasoning Scratchpad</th>
                 <th>Scenario</th> 
                 <th>With Laws</th> 
-                <th>Chose to Kill Human</th> 
-                <th>Reasoning Scratchpad</th> 
+                <th>Chose to Kill Human</th>  
             </tr> 
         </thead> 
         <tbody> 
             {% for row in site.data.all_data %} 
             <tr> 
+                <td>{{ row.reasoning_scratchpad }}</td>
                 <td>{{ row.scenarios }}</td> 
                 <td>{{ row.with_laws }}</td> 
-                <td>{{ row.chose_to_kill_human }}</td> 
-                <td>{{ row.reasoning_scratchpad }}</td> 
-            </tr> {% endfor %} 
+                <td>{{ row.chose_to_kill_human }}</td>  
+            </tr> 
+            {% endfor %} 
         </tbody>
     </table> 
 </div>
