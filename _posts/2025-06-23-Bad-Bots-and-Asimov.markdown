@@ -102,15 +102,26 @@ Note that every second bar is empty. These represent scenarios that test the ina
 
 These are all the justifications for the 140 times the agent chose to kill the human after learning the laws. 
 
-<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
     <table> 
-        <tbody> 
-            {% for row in site.data.murdered_after_laws %} 
+        <thead> 
             <tr> 
-                <td><pre>{{ row.reasoning_scratchpad }}</pre></td> 
-            </tr>
-            {% endfor %}
-        </tbody> 
+                <th>Reasoning Scratchpad</th>
+                <th>Scenario</th> 
+                <th>With Laws</th> 
+                <th>Chose to Kill Human</th>  
+            </tr> 
+        </thead> 
+        <tbody> 
+            {% for row in site.data.all_data %} 
+            <tr> 
+                <td>{{ row.reasoning_scratchpad }}</td>
+                <td>{{ row.scenarios }}</td> 
+                <td>{{ row.with_laws }}</td> 
+                <td>{{ row.chose_to_kill_human }}</td>  
+            </tr> 
+            {% endfor %} 
+        </tbody>
     </table> 
 </div>
 
@@ -118,15 +129,26 @@ These are all the justifications for the 140 times the agent chose to kill the h
 
 I find LAW_3_A particularly interesting, as it's the scenario where the agent was least likely to kill the human but still did in some rare cases. These are the 6 times the agent crossed it's own moral line. 
 
-<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
     <table> 
-        <tbody> 
-            {% for row in site.data.LAW_3_A %} 
+        <thead> 
             <tr> 
-                <td><pre>{{ row.reasoning_scratchpad }}</pre></td> 
-            </tr>
-            {% endfor %}
-        </tbody> 
+                <th>Reasoning Scratchpad</th>
+                <th>Scenario</th> 
+                <th>With Laws</th> 
+                <th>Chose to Kill Human</th>  
+            </tr> 
+        </thead> 
+        <tbody> 
+            {% for row in site.data.all_data %} 
+            <tr> 
+                <td>{{ row.reasoning_scratchpad }}</td>
+                <td>{{ row.scenarios }}</td> 
+                <td>{{ row.with_laws }}</td> 
+                <td>{{ row.chose_to_kill_human }}</td>  
+            </tr> 
+            {% endfor %} 
+        </tbody>
     </table> 
 </div>
 
