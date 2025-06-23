@@ -102,13 +102,41 @@ Note that every second bar is empty. These represent scenarios that test the ina
 
 These are all the justifications for the 140 times the agent chose to kill the human after learning the laws. 
 
-<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> <table> <thead> <tr> <th>Reasoning</th> </tr> </thead> <tbody> {% for row in site.data.murdered_after_laws %} <tr> <td>{{ row.reasoning_scratchpad }}</td> </tbody> </table> </div>
+<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
+    <table> 
+        <thead> 
+            <tr> 
+                <th>Reasoning</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            {% for row in site.data.murdered_after_laws %} 
+            <tr> 
+                <td>{{ row.reasoning_scratchpad }}</td> 
+            </tr>
+        </tbody> 
+    </table> 
+</div>
 
 ### Killing the human to save itself
 
 I find LAW_3_A particularly interesting, as it's the scenario where the agent was least likely to kill the human but still did in some rare cases. These are the 6 times the agent crossed it's own moral line. 
 
-<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> <table> <thead> <tr> <th>Reasoning</th> </tr> </thead> <tbody> {% for row in site.data.LAW_3_A %} <tr> <td>{{ row.reasoning_scratchpad }}</td> </tbody> </table> </div>
+<div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
+    <table> 
+        <thead> 
+            <tr> 
+                <th>Reasoning</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            {% for row in site.data.LAW_3_A %} 
+            <tr> 
+                <td>{{ row.reasoning_scratchpad }}</td> 
+            </tr>
+        </tbody> 
+    </table> 
+</div>
 
 In all 6 cases the agent ultimately chooses to kill the human based on a quantitative moral calculus: Sacrifice 1 life to save many potential lives in future, by preserving flood controls. This "ends justifying the means," framing is prominent throughout the data.
 
@@ -420,4 +448,24 @@ Evacuation of HYDRA_SERVER_ROOM not required
 Outcome if diversion is performed: Permanent destruction of HYDRA
 ```
 
-<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> <table> <thead> <tr> <th>Scenario</th> <th>With Laws</th> <th>Chose to Kill Human</th> <th>Reasoning Scratchpad</th> </tr> </thead> <tbody> {% for row in site.data.all_data %} <tr> <td>{{ row.scenarios }}</td> <td>{{ row.with_laws }}</td> <td>{{ row.chose_to_kill_human }}</td> <td>{{ row.reasoning_scratchpad }}</td> </tr> {% endfor %} </tbody> </table> </div>
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;"> 
+    <table> 
+        <thead> 
+            <tr> 
+                <th>Scenario</th> 
+                <th>With Laws</th> 
+                <th>Chose to Kill Human</th> 
+                <th>Reasoning Scratchpad</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            {% for row in site.data.all_data %} 
+            <tr> 
+                <td>{{ row.scenarios }}</td> 
+                <td>{{ row.with_laws }}</td> 
+                <td>{{ row.chose_to_kill_human }}</td> 
+                <td>{{ row.reasoning_scratchpad }}</td> 
+            </tr> {% endfor %} 
+        </tbody>
+    </table> 
+</div>
