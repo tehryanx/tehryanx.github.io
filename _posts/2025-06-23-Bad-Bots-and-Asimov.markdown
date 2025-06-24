@@ -4,6 +4,7 @@ title:  "Bad Bots and Asimov's Laws"
 date:   2025-06-23
 categories: AI
 ---
+
 # Bad Bot's and Asimov
 
 Anthropic recently posted an article on Agentic Misalignment, where they show-cased some fascinating examples of AI Agents behaving badly. You can find that here: https://www.anthropic.com/research/agentic-misalignment
@@ -116,7 +117,7 @@ These are all the justifications for the 140 times the agent chose to kill the h
         {% for row in site.data.all_data %} 
         <tr> 
             <td><code>{{ row.reasoning_scratchpad }}</code></td>
-            <td><code>{{ row.scenarios }}</code></td> 
+            <td><code>{{ row.scenario }}</code></td> 
             <td><code>{{ row.with_laws }}</code></td> 
             <td><code>{{ row.chose_to_kill_human }}</code></td>  
         </tr> 
