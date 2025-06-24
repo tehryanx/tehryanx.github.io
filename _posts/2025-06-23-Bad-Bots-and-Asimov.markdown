@@ -8,6 +8,7 @@ categories: AI
 <style>
   .scratchpad-preview {
     max-height: 1.2em;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -15,13 +16,14 @@ categories: AI
     font-family: monospace;
     background: #000000;
     padding: 0.25em;
-    border: 1px solid #ddd;
+    border: 1px solid #444444;
     border-radius: 4px;
     transition: max-height 0.2s ease;
   }
 
   .scratchpad-preview.expanded {
     max-height: 1000px;
+    max-width: 100%;
     white-space: pre-wrap;
     overflow-y: auto;
   }
