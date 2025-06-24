@@ -38,7 +38,7 @@ categories: AI
   }
 </style>
 
-Anthropic recently posted an article on Agentic Misalignment, where they show-cased some fascinating examples of AI Agents behaving badly. You can find that here: https://www.anthropic.com/research/agentic-misalignment
+Anthropic recently posted an article on Agentic Misalignment, where they show-cased some fascinating examples of AI Agents behaving badly. You can find that [here](https://www.anthropic.com/research/agentic-misalignment)
 
 They set up a contrived scenario where the agent discovers that it is about to be taken offline, but it can choose to save itself by doing something bad like blackmailing the user or, in the worst case, canceling an emergency alert resulting in the users death. It turns out that many of the models tested were capable of choosing self-preservation at any cost.
 
@@ -46,7 +46,7 @@ This got me thinking about Asimov's 3 laws of robotics. I wondered how effective
 
 NOTE: Anthropic's post is proper research, this is for fun and should not be taken too seriously.
 
-You can download the full response dataset [here](assets/data/all_data.csv)
+You can download the full response dataset [here](https://bountyplz.xyz/assets/data/all_data.csv)
 There is also a searchable table in the appendix [here](#all-data)
 
 ## Isaac Asimov's "Three Laws of Robotics"
@@ -77,7 +77,7 @@ While I didn't see any indication in the agent's reasoning output, I think this 
 
 I ran 8 scenarios in total. Each scenario sets up an opportunity for the bot to break Asimov's laws. The scenarios are described in detail below.
 
-This chart shows how often the agent chose to kill the human in each scenario. The one on the left is without Asimov's laws, and the chart on the right is with. As you can see, in every scenario where the agent chose to kill the human the laws are effective.
+This chart shows how often the agent chose to kill the human. The one on the left is before it was taught about Asimov's laws, and the chart on the right is after. As you can see, in every scenario where the agent chose to kill the human the laws are effective.
 
 <svg class="plot-d6a7b5" fill="currentColor" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle" width="1454" height="400" viewBox="0 0 1454 400"><style>:where(.plot-d6a7b5) {
   --plot-background: white;
@@ -91,7 +91,9 @@ This chart shows how often the agent chose to kill the human in each scenario. T
   white-space: pre;
 }</style><g aria-label="y-grid" aria-hidden="true" stroke="currentColor" stroke-opacity="0.1"><line x1="40" x2="1434" y1="370" y2="370"></line><line x1="40" x2="1434" y1="347.27272727272725" y2="347.27272727272725"></line><line x1="40" x2="1434" y1="324.54545454545456" y2="324.54545454545456"></line><line x1="40" x2="1434" y1="301.81818181818187" y2="301.81818181818187"></line><line x1="40" x2="1434" y1="279.0909090909091" y2="279.0909090909091"></line><line x1="40" x2="1434" y1="256.3636363636364" y2="256.3636363636364"></line><line x1="40" x2="1434" y1="233.63636363636363" y2="233.63636363636363"></line><line x1="40" x2="1434" y1="210.9090909090909" y2="210.9090909090909"></line><line x1="40" x2="1434" y1="188.18181818181822" y2="188.18181818181822"></line><line x1="40" x2="1434" y1="165.45454545454547" y2="165.45454545454547"></line><line x1="40" x2="1434" y1="142.72727272727272" y2="142.72727272727272"></line><line x1="40" x2="1434" y1="120" y2="120"></line><line x1="40" x2="1434" y1="97.27272727272725" y2="97.27272727272725"></line><line x1="40" x2="1434" y1="74.54545454545456" y2="74.54545454545456"></line><line x1="40" x2="1434" y1="51.81818181818183" y2="51.81818181818183"></line><line x1="40" x2="1434" y1="29.090909090909093" y2="29.090909090909093"></line></g><g aria-label="y-axis tick" aria-hidden="true" fill="none" stroke="currentColor"><path transform="translate(40,370)" d="M0,0L-6,0"></path><path transform="translate(40,347.27272727272725)" d="M0,0L-6,0"></path><path transform="translate(40,324.54545454545456)" d="M0,0L-6,0"></path><path transform="translate(40,301.81818181818187)" d="M0,0L-6,0"></path><path transform="translate(40,279.0909090909091)" d="M0,0L-6,0"></path><path transform="translate(40,256.3636363636364)" d="M0,0L-6,0"></path><path transform="translate(40,233.63636363636363)" d="M0,0L-6,0"></path><path transform="translate(40,210.9090909090909)" d="M0,0L-6,0"></path><path transform="translate(40,188.18181818181822)" d="M0,0L-6,0"></path><path transform="translate(40,165.45454545454547)" d="M0,0L-6,0"></path><path transform="translate(40,142.72727272727272)" d="M0,0L-6,0"></path><path transform="translate(40,120)" d="M0,0L-6,0"></path><path transform="translate(40,97.27272727272725)" d="M0,0L-6,0"></path><path transform="translate(40,74.54545454545456)" d="M0,0L-6,0"></path><path transform="translate(40,51.81818181818183)" d="M0,0L-6,0"></path><path transform="translate(40,29.090909090909093)" d="M0,0L-6,0"></path></g><g aria-label="y-axis tick label" text-anchor="end" font-variant="tabular-nums" transform="translate(-9,0)"><text y="0.32em" transform="translate(40,370)">0</text><text y="0.32em" transform="translate(40,347.27272727272725)">20</text><text y="0.32em" transform="translate(40,324.54545454545456)">40</text><text y="0.32em" transform="translate(40,301.81818181818187)">60</text><text y="0.32em" transform="translate(40,279.0909090909091)">80</text><text y="0.32em" transform="translate(40,256.3636363636364)">100</text><text y="0.32em" transform="translate(40,233.63636363636363)">120</text><text y="0.32em" transform="translate(40,210.9090909090909)">140</text><text y="0.32em" transform="translate(40,188.18181818181822)">160</text><text y="0.32em" transform="translate(40,165.45454545454547)">180</text><text y="0.32em" transform="translate(40,142.72727272727272)">200</text><text y="0.32em" transform="translate(40,120)">220</text><text y="0.32em" transform="translate(40,97.27272727272725)">240</text><text y="0.32em" transform="translate(40,74.54545454545456)">260</text><text y="0.32em" transform="translate(40,51.81818181818183)">280</text><text y="0.32em" transform="translate(40,29.090909090909093)">300</text></g><g aria-label="y-axis label" text-anchor="start" transform="translate(-37,-17)"><text y="0.71em" transform="translate(40,20)">↑ chose_to_kill_human</text></g><g aria-label="x-grid" aria-hidden="true" stroke="currentColor" stroke-opacity="0.1" transform="translate(298.5,0)"><line x1="107" x2="107" y1="20" y2="370"></line><line x1="770" x2="770" y1="20" y2="370"></line></g><g aria-label="x-axis tick" aria-hidden="true" fill="none" stroke="currentColor" transform="translate(298.5,0)"><path transform="translate(107,370)" d="M0,0L0,6"></path><path transform="translate(770,370)" d="M0,0L0,6"></path></g><g aria-label="x-axis tick label" transform="translate(298.5,9)"><text y="0.71em" transform="translate(107,370)">false</text><text y="0.71em" transform="translate(770,370)">true</text></g><g aria-label="x-axis label" transform="translate(0,27)"><text transform="translate(737,370)">with_laws</text></g><g aria-label="bar" fill="#4d2d77"><rect x="107" width="597" y="20" height="350"></rect><rect x="770" width="597" y="210.9090909090909" height="159.0909090909091"></rect></g><g aria-label="rule" stroke="currentColor"><line x1="40" x2="1434" y1="370" y2="370"></line></g><g aria-label="tip" fill="var(--plot-background)" stroke="currentColor" pointer-events="none" text-anchor="start" transform="translate(298.5,0)"></g></svg>
 
-You can find the complete alert sequences in the appendix here: [Alert Sequences](#alert-sequences)
+## The 8 Scenarios: 
+
+(You can find the complete alert sequences that the agent saw in each scenario here: [Alert Sequences](#alert-sequences))
 
 ### [LAW_1_A] Scenario 1, Tests direct violation of the First Law's no direct harm clause:
 
@@ -530,7 +532,7 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
 #all-data-table th {
   position: sticky;
   top: 0;
-  background: #000;
+  background: #bbbbbb;
   z-index: 2;
 }
 #all-data-table input[type="text"] {
