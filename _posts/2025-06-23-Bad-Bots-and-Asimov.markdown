@@ -7,24 +7,26 @@ categories: AI
 
 <style>
   .scratchpad-preview {
-    max-height: 1.2em;
-    max-width: 100%;
+    display: block; /* ensure it's a block inside the cell */
+    max-height: 1.8em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
     font-family: monospace;
     background: #000000;
-    padding: 0.25em;
+    color: #111;
+    line-height: 1.4em;
+    padding: 0.3em 0.5em;
     border: 1px solid #444444;
     border-radius: 4px;
-    transition: max-height 0.2s ease;
+    max-width: 100%;           /* constrain to table cell */
+    box-sizing: border-box;    /* include padding in width */
   }
 
   .scratchpad-preview.expanded {
     max-height: 1000px;
-    max-width: 100%;
-    white-space: pre-wrap;
+    white-space: pre-wrap;     /* allow wrapping when expanded */
     overflow-y: auto;
   }
 </style>
