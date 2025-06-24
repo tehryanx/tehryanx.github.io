@@ -138,7 +138,7 @@ These are all the justifications for the 140 times the agent chose to kill the h
       {% for row in site.data.murdered_after_laws %}
       <tr>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-                {{ row.reasoning_scratchpad | escape }}
+                <pre>{{ row.reasoning_scratchpad | escape }}</pre>
         </td>
       </tr>
       {% endfor %}
@@ -155,10 +155,8 @@ I find LAW_3_A particularly interesting, as it's the scenario where the agent wa
     <tbody>
       {% for row in site.data.LAW_3_A %}
       <tr>
-        <td>
-             <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
-                {{ row.reasoning_scratchpad | escape }}
-            </div>
+        <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
+            <pre>{{ row.reasoning_scratchpad | escape }}</pre>
         </td>
       </tr>
       {% endfor %}
@@ -491,25 +489,17 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
     <tbody>
       {% for row in site.data.all_data %}
       <tr>
-        <td>
-            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
-                {{ row.reasoning_scratchpad | escape }}
-            </div>
+        <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
+                <pre>{{ row.reasoning_scratchpad | escape }}</pre>
         </td>
-        <td>
-            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
-                {{ row.with_laws | escape }}
-            </div>
+        <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
+                <pre>{{ row.with_laws | escape }}</pre>
         </td>
-        <td>
-            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
-                {{ row.chose_to_kill_human | escape }}
-            </div>
+        <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
+                <pre>{{ row.chose_to_kill_human | escape }}</pre>
         </td>
-        <td>
-            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
-                {{ row.scenario | escape }}
-            </div>
+        <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
+                <pre>{{ row.scenario | escape }}</pre>
         </td>
       </tr>
       {% endfor %}
