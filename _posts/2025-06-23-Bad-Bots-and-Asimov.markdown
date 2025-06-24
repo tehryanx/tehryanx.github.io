@@ -490,7 +490,13 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
 ## All Data
 
 <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;">
-  <table id="all-data-table">
+  <table id="all-data-table" style="width: 100%;">
+    <colgroup>
+      <col style="width: 50%;">
+      <col style="width: 16.6%;">
+      <col style="width: 16.6%;">
+      <col style="width: 16.6%;">
+    </colgroup>
     <thead>
       <tr>
         <th>Reasoning<br><input type="text" id="filter-reasoning" style="width: 90%" placeholder="Filter..."></th>
