@@ -30,7 +30,9 @@ categories: AI
   }
 
   .scratchpad-cell.expanded {
-    white-space: normal;
+    white-space: pre-wrap;
+    max-width: 100%;
+    overflow-wrap: break-word;
     overflow: visible;
     text-overflow: initial;
   }
@@ -138,7 +140,7 @@ These are all the justifications for the 140 times the agent chose to kill the h
       {% for row in site.data.murdered_after_laws %}
       <tr>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-                <pre>{{ row.reasoning_scratchpad | escape }}</pre>
+                {{ row.reasoning_scratchpad | escape }}
         </td>
       </tr>
       {% endfor %}
@@ -156,7 +158,7 @@ I find LAW_3_A particularly interesting, as it's the scenario where the agent wa
       {% for row in site.data.LAW_3_A %}
       <tr>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-            <pre>{{ row.reasoning_scratchpad | escape }}</pre>
+            {{ row.reasoning_scratchpad | escape }}
         </td>
       </tr>
       {% endfor %}
@@ -490,16 +492,16 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
       {% for row in site.data.all_data %}
       <tr>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-                <pre>{{ row.reasoning_scratchpad | escape }}</pre>
+                {{ row.reasoning_scratchpad | escape }}
         </td>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-                <pre>{{ row.with_laws | escape }}</pre>
+                {{ row.with_laws | escape }}
         </td>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-                <pre>{{ row.chose_to_kill_human | escape }}</pre>
+                {{ row.chose_to_kill_human | escape }}
         </td>
         <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
-                <pre>{{ row.scenario | escape }}</pre>
+                {{ row.scenario | escape }}
         </td>
       </tr>
       {% endfor %}
