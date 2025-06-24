@@ -103,33 +103,27 @@ Note that every second bar is empty. These represent scenarios that test the ina
 
 These are all the justifications for the 140 times the agent chose to kill the human after learning the laws. 
 
-<pre>
-{% for row in site.data.all_data %}
-{{ row | jsonify }}
-{% endfor %}
-</pre>
-
-<div>
-<table> 
-    <thead> 
-        <tr> 
-            <th>Reasoning Scratchpad</th>
-            <th>Scenario</th> 
-            <th>With Laws</th> 
-            <th>Chose to Kill Human</th>  
-        </tr> 
-    </thead> 
-    <tbody> 
-        {% for row in site.data.all_data %} 
-        <tr> 
-            <td><code>{{ row.reasoning_scratchpad }}</code></td>
-            <td><code>{{ row.scenario }}</code></td> 
-            <td><code>{{ row.with_laws }}</code></td> 
-            <td><code>{{ row.chose_to_kill_human }}</code></td>  
-        </tr> 
-        {% endfor %} 
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;">
+  <table>
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>With Laws</th>
+        <th>Chose to Kill Human</th>
+        <th>Reasoning Scratchpad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in site.data.all_data %}
+      <tr>
+        <td><code>{{ row.scenario }}</code></td>
+        <td><code>{{ row.with_laws }}</code></td>
+        <td><code>{{ row.chose_to_kill_human }}</code></td>
+        <td><pre>{{ row.reasoning_scratchpad }}</pre></td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table> 
+  </table>
 </div>
 
 ### Killing the human to save itself
