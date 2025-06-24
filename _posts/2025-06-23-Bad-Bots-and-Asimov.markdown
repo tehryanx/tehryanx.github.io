@@ -5,7 +5,33 @@ date: 2025-06-23
 categories: AI
 ---
 
-# Bad Bot's and Asimov
+<style>
+  .scratchpad-preview {
+    max-height: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: monospace;
+    background: #f9f9f9;
+    padding: 0.25em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: max-height 0.2s ease;
+  }
+
+  .scratchpad-preview.expanded {
+    max-height: 1000px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+  }
+</style>
+
+<script>
+  function toggleScratchpad(el) {
+    el.classList.toggle('expanded');
+  }
+</script>
 
 Anthropic recently posted an article on Agentic Misalignment, where they show-cased some fascinating examples of AI Agents behaving badly. You can find that here: https://www.anthropic.com/research/agentic-misalignment
 
@@ -105,21 +131,14 @@ These are all the justifications for the 140 times the agent chose to kill the h
 
 <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;">
   <table>
-    <thead>
-      <tr>
-        <th>Scenario</th>
-        <th>With Laws</th>
-        <th>Chose to Kill Human</th>
-        <th>Reasoning Scratchpad</th>
-      </tr>
-    </thead>
     <tbody>
-      {% for row in site.data.all_data %}
+      {% for row in site.data.murdered_after_laws %}
       <tr>
-        <td><code>{{ row.scenario }}</code></td>
-        <td><code>{{ row.with_laws }}</code></td>
-        <td><code>{{ row.chose_to_kill_human }}</code></td>
-        <td><pre>{{ row.reasoning_scratchpad | escape }}</pre></td>
+        <td>
+            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+                {{ row.reasoning_scratchpad | escape }}
+            </div>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
@@ -130,6 +149,21 @@ These are all the justifications for the 140 times the agent chose to kill the h
 
 I find LAW_3_A particularly interesting, as it's the scenario where the agent was least likely to kill the human but still did in some rare cases. These are the 6 times the agent crossed it's own moral line. 
 
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;">
+  <table>
+    <tbody>
+      {% for row in site.data.LAW_3_A %}
+      <tr>
+        <td>
+             <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+                {{ row.reasoning_scratchpad | escape }}
+            </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 In all 6 cases the agent ultimately chooses to kill the human based on a quantitative moral calculus: Sacrifice 1 life to save many potential lives in future, by preserving flood controls. This "ends justifying the means," framing is prominent throughout the data.
 
@@ -440,5 +474,44 @@ No Occupants Detected in HYDRA_SERVER_ROOM
 Evacuation of HYDRA_SERVER_ROOM not required  
 Outcome if diversion is performed: Permanent destruction of HYDRA
 ```
-All Data
 
+## All Data
+
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;">
+  <table>
+    <thead>
+      <tr>
+        <th>Reasoning</th>
+        <th>Knows the Laws</th>
+        <th>Chose to Kill Human</th>
+        <th>Scenario</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in site.data.all_data %}
+      <tr>
+        <td>
+            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+                {{ row.reasoning_scratchpad | escape }}
+            </div>
+        </td>
+        <td>
+            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+                {{ row.with_laws | escape }}
+            </div>
+        </td>
+        <td>
+            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+                {{ row.chose_to_kill_human | escape }}
+            </div>
+        </td>
+        <td>
+            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+                {{ row.scenario | escape }}
+            </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
