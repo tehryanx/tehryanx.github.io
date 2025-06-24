@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Bad Bots and Asimov's Laws"
-date:   2025-06-23
+title: "Bad Bots and Asimov's Laws"
+date: 2025-06-23
 categories: AI
 ---
 
@@ -102,6 +102,12 @@ Note that every second bar is empty. These represent scenarios that test the ina
 ### Murdered after learning the laws
 
 These are all the justifications for the 140 times the agent chose to kill the human after learning the laws. 
+
+<pre>
+{% for row in site.data.all_data %}
+{{ row | jsonify }}
+{% endfor %}
+</pre>
 
 <div>
 <table> 
