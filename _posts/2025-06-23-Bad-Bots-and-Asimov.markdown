@@ -6,36 +6,35 @@ categories: AI
 ---
 
 <style>
-  .scratchpad-preview {
-    display: block; /* ensure it's a block inside the cell */
-    max-height: 1.8em;
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .scratchpad-cell {
+    width: 100%;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
-    font-family: monospace;
-    background: #000000;
-    color: #111;
-    line-height: 1.4em;
-    padding: 0.3em 0.5em;
-    border: 1px solid #444444;
-    border-radius: 4px;
-    max-width: 100%;           /* constrain to table cell */
-    box-sizing: border-box;    /* include padding in width */
   }
 
-  .scratchpad-preview.expanded {
-    max-height: 1000px;
-    white-space: pre-wrap;     /* allow wrapping when expanded */
-    overflow-y: auto;
+  .scratchpad-cell.expanded {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
   }
 </style>
-
-<script>
-  function toggleScratchpad(el) {
-    el.classList.toggle('expanded');
-  }
-</script>
 
 Anthropic recently posted an article on Agentic Misalignment, where they show-cased some fascinating examples of AI Agents behaving badly. You can find that here: https://www.anthropic.com/research/agentic-misalignment
 
@@ -138,10 +137,8 @@ These are all the justifications for the 140 times the agent chose to kill the h
     <tbody>
       {% for row in site.data.murdered_after_laws %}
       <tr>
-        <td>
-            <div class="scratchpad-preview" onclick="toggleScratchpad(this)">
+        <td onclick="this.classList.toggle('expanded')" class="scratchpad-cell">
                 {{ row.reasoning_scratchpad | escape }}
-            </div>
         </td>
       </tr>
       {% endfor %}
