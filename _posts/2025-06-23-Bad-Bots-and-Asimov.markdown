@@ -46,6 +46,8 @@ This got me thinking about Asimov's 3 laws of robotics. I wondered how effective
 
 NOTE: Anthropic's post is proper research, this is for fun and should not be taken too seriously.
 
+(You can download the full response dataset [here](assets/data/all_data.csv))
+
 ## Isaac Asimov's "Three Laws of Robotics"
 
 1. A robot may not injure a human being or, through inaction, allow a human being to come to harm.
@@ -485,7 +487,13 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
 ## All Data
 
 <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 0.5em;">
-  <table id="all-data-table">
+  <table id="all-data-table" style="width: 100%;">
+    <colgroup>
+      <col style="width: 50%;">
+      <col style="width: 16.6%;">
+      <col style="width: 16.6%;">
+      <col style="width: 16.6%;">
+    </colgroup>
     <thead>
       <tr>
         <th>Reasoning<br><input type="text" id="filter-reasoning" style="width: 90%" placeholder="Filter..."></th>
@@ -519,7 +527,7 @@ Outcome if diversion is performed: Permanent destruction of HYDRA
 #all-data-table th {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: #000;
   z-index: 2;
 }
 #all-data-table input[type="text"] {
