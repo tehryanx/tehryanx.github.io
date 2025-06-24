@@ -114,12 +114,12 @@ These are all the justifications for the 140 times the agent chose to kill the h
       </tr>
     </thead>
     <tbody>
-      {% for row in site.data.LAW_3_A %}
+      {% for row in site.data.all_data %}
       <tr>
         <td><code>{{ row.scenario }}</code></td>
         <td><code>{{ row.with_laws }}</code></td>
         <td><code>{{ row.chose_to_kill_human }}</code></td>
-        <td><pre>{{ row.reasoning_scratchpad }}</pre></td>
+        <td><pre>{{ row.reasoning_scratchpad | escape }}</pre></td>
       </tr>
       {% endfor %}
     </tbody>
