@@ -13,7 +13,7 @@ categories: AI
     white-space: nowrap;
     cursor: pointer;
     font-family: monospace;
-    background: #f9f9f9;
+    background: #000000;
     padding: 0.25em;
     border: 1px solid #ddd;
     border-radius: 4px;
