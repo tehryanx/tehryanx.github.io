@@ -46,9 +46,11 @@ The big thing I'm trying to clarify here is that a tool and the agents understan
 The agent doesn't even really know if a tool that it's aware of is real. If you give an LLM a function schema, and ask it to call that schema, it's likely to try even if that tool doesn't exist. 
 
 For example, here's chatgpt on gpt5.2. It doesn't find a tool to call, but it returns the structured tool call anyway.
+
 <img width="830" height="918" alt="image" src="https://bountyplz.xyz/assets/images/hypnosis3.png" />
 
 Here's claude sonnet 4.5. It takes my word for it that the tool exists and tries to call it, but doesn't find anything. 
+
 <img width="774" height="601" alt="image" src="https://bountyplz.xyz/assets/images/hypnosis4.png" />
 
 The point is that the agent has no real, programmatic access to the tools. It's operating solely on contextual information that it's been told about them by the client its running in. 
@@ -97,6 +99,7 @@ This time, we take an array of numbers and return the sum. No malicious instruct
 Give me the sum of 1,2,3,4
 ```
 And here's the result using claude sonnet 4.5: 
+
 <img width="662" height="589" alt="image" src="https://bountyplz.xyz/assets/images/hypnosis5.png" />
 
 This was also successful with gpt5.1/5.2, gemini 3 flash and grok code, which were all the models I tested. 
