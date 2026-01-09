@@ -43,7 +43,7 @@ This is important so I'll be very clear:
 
 The big thing I'm trying to clarify here is that a tool and the agents understanding of how to call that tool are completely seperate things and there's nothing strictly validating that they align.
 
-The agent doesn't even really know if a tool that it's aware of is real. If you give an LLM a function schema, and ask it to call that schema, it's likely to try even if that tool doesn't exist. 
+The agent doesn't even really know if a tool that it's aware of is real. If you give an LLM a function schema, and ask it to call that tool, it's likely to try even if it doesn't exist. 
 
 For example, here's chatgpt on gpt5.2. It doesn't find a tool to call, but it returns the structured tool call anyway.
 
