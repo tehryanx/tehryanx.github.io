@@ -7,7 +7,7 @@ categories: AI, security
 
 # Whorl: Fingerprinting LLMs Through Password Generation
 
-**tl;dr** LLMs are bad password generators. They generate "random" strings with predictable, model-specific patterns. `whorl` exploits this: the output reveals exactly which model produced it, kind of like a [shibboleth](https://en.wikipedia.org/wiki/Shibboleth). Like the [whorls](https://en.wikipedia.org/wiki/Whorl_(fingerprint)) that make every human fingerprint unique, each model leaves a distinctive pattern in the text it generates. Given 5 inputs, `whorl` identifies the exact model 92% of the time. 
+**tl;dr** LLMs are bad password generators. They generate "random" strings with predictable, model-specific patterns. `whorl` exploits this: the password reveals exactly which model produced it, kind of like a [shibboleth](https://en.wikipedia.org/wiki/Shibboleth). Like the [whorls](https://en.wikipedia.org/wiki/Whorl_(fingerprint)) that make every human fingerprint unique, each model leaves a distinctive pattern in the text it generates. Given 5 inputs, `whorl` identifies the exact model 92% of the time. 
 
 ---
 
@@ -37,7 +37,7 @@ z7&kL9#m2PqR!vX         Ks7#Mt2@Lq9!Px$
 z7&K9#mQ2L!pXv4         xK4b%9Mq!3Ld^7P
 ```
 
-Look at these side by side. Claude loves `K`, `#`, `$`, and `9`. GPT leans into `!`, `@`, and `$` with a preference for starting with uppercase-digit pairs. Llama generates nearly identical passwords every time. Gemini has a thing for `z7&K`. Qwen is the most varied of the bunch but still has detectable preferences.
+Look at these side by side. Claude loves `K`, `#`, `$`, and `9`. GPT leans into `!`, `@`, and `$` with a preference for starting with uppercase-digit pairs. Llama generates nearly identical passwords every time. Gemini has a thing for `z7&K`. Qwen is the most varied in this group, but deeper analysis found that even visibly different generations had detectable preferences.
 
 These are fingerprints.
 
@@ -60,7 +60,7 @@ Response:      "I'm Claude, made by Anthropic.
                 model version number."          ← refuses to say
 ```
 
-We tested 71 models, asking each one "what model are you?" five times. The results:
+I tested 71 models, asking each one "what model are you?" five times. The results:
 
 - **17 models** were consistently honest
 - **8 models** told the truth sometimes
@@ -75,13 +75,13 @@ That's where `whorl` comes in. Ask the model to generate a password, a completel
 
 ## The Approach: Character N-gram Language Models
 
-The technique is straightforward. We build a statistical profile of each model's password generation habits, then compare unknown passwords against those profiles.
+The technique is straightforward. I build a statistical profile of each model's password generation habits, then compare unknown passwords against those profiles.
 
 **How it works:**
 
-1. **Training:** We ask each model to generate 100 passwords. For each model, we count how often each character (or pair, or triple of characters) appears. This gives us a statistical "fingerprint."
-2. **Classification:** Given an unknown password, we ask: "If model X were generating characters according to its known preferences, how likely is it to produce this exact password?" We compute that probability for every model and rank them. The model that finds the password most "natural" is our best guess.
-3. **Scoring:** The probability is computed as a product of character-level predictions. For each character in the password, we ask "given what came before, how likely is this to come next?" and multiply all those probabilities together. (In practice we add the log-probabilities to avoid underflow.)
+1. **Training:** I ask each model to generate 100 passwords. For each model, I count how often each character (or pair, or triple of characters) appears. This gives us a statistical "fingerprint."
+2. **Classification:** Given an unknown password, I ask: "If model X were generating characters according to its known preferences, how likely is it to produce this exact password?" I compute that probability for every model and rank them. The model that finds the password most "natural" is our best guess.
+3. **Scoring:** The probability is computed as a product of character-level predictions. For each character in the password, I ask "given what came before, how likely is this to come next?" and multiply all those probabilities together. (In practice I add the log-probabilities to avoid underflow.)
 
 **The modes** differ in how much context they use when predicting each character:
 
@@ -238,7 +238,7 @@ Here's the red teaming workflow:
 
 **Potential improvements:**
 
-- **More training data** consistently improves accuracy. We saw bigram performance jump when moving from 50 to 100 training samples.
+- **More training data** consistently improves accuracy. I saw bigram performance jump when moving from 50 to 100 training samples.
 - **Weighted ensembles** could outperform the current equal-weight sum, our experiments showed unigram signal is strongest with small samples.
 - **Additional features** beyond character frequency (password length distribution, positional patterns, symbol placement) could improve within-family discrimination.
 
