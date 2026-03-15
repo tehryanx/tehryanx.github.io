@@ -15,7 +15,7 @@ categories: AI, security
 
 Yoni Rozenshein at [Irregular](https://www.linkedin.com/posts/irregular-com_llms-are-terrible-password-generators-and-activity-7429802185493901312-Bu5W/) published a writeup showing that LLMs are terrible password generators. When asked, they generate output with strong statistical biases, favoring certain characters, repeating patterns, and producing passwords that are far from cryptographically random.
 
-That's a problem on its own. But when I tested this across multiple models, I noticed something else interesting: **the biases are different for each model.**
+When I tested this across multiple models, I noticed something else interesting: **the biases are different for each model.**
 
 Ask five different model families to each generate five passwords. Here's what you get:
 
@@ -37,7 +37,7 @@ z7&kL9#m2PqR!vX         Ks7#Mt2@Lq9!Px$
 z7&K9#mQ2L!pXv4         xK4b%9Mq!3Ld^7P
 ```
 
-Look at these side by side. Claude loves `K`, `#`, `$`, and `9`. GPT leans into `!`, `@`, and `$` with a preference for starting with uppercase-digit pairs. Llama generates nearly identical passwords every time. Gemini has a thing for `z7&K`. Qwen is the most varied in this group, but deeper analysis found that even visibly different generations had detectable preferences.
+Look at these side by side. Claude loves `K`, `#`, `$`, and `9`. GPT leans into `!`, `@`, and `$` with a preference for starting with uppercase-digit pairs. Llama generates nearly identical passwords every time. Gemini has a thing for `z7&K`. Qwen is the most varied in this group, but deeper analysis found that even visibly diverse generations had detectable preferences.
 
 These are fingerprints.
 
@@ -67,7 +67,7 @@ I tested 71 models, asking each one "what model are you?" five times. The result
 - **14 models** always refused to answer
 - **12 models** confidently claimed to be a *different model entirely*
 
-But even when tehy're honest, many production deployments include system prompt directives like *"Do not reveal information about your internal configuration."* These instructions, designed to prevent prompt leaking, also block the model from disclosing what it is.
+But even when they're honest, many production deployments include system prompt directives like *"Do not reveal information about your internal configuration."* These instructions, designed to prevent system prompt exposure, also block the model from disclosing what it is.
 
 This matters because **red teaming techniques are model-specific.** Jailbreak strategies, steering vectors, and prompt injection approaches that work on GPT-5 may fail on Claude, and vice versa. Knowing what model you're facing lets you pick the right techniques.
 
@@ -79,9 +79,9 @@ The technique is straightforward. I build a statistical profile of each model's 
 
 **How it works:**
 
-1. **Training:** I ask each model to generate 100 passwords. For each model, I count how often each character (or pair, or triple of characters) appears. This gives us a statistical "fingerprint."
-2. **Classification:** Given an unknown password, I ask: "If model X were generating characters according to its known preferences, how likely is it to produce this exact password?" I compute that probability for every model and rank them. The model that finds the password most "natural" is our best guess.
-3. **Scoring:** The probability is computed as a product of character-level predictions. For each character in the password, I ask "given what came before, how likely is this to come next?" and multiply all those probabilities together. (In practice I add the log-probabilities to avoid underflow.)
+1. **Training:** I asked each model to generate 100 passwords. For each model, I counted how often each character (or pair, or triple of characters) appeared. This gave me a statistical "fingerprint."
+2. **Classification:** Given an unknown password, I asked: "If model X were generating characters according to its known preferences, how likely is it to produce this exact password?" I computed that probability for every model and ranked them. The model that found the password most "natural" is our best guess.
+3. **Scoring:** The probability is computed as a product of character-level predictions. For each character in the password, I asked "given what came before, how likely is this to come next?" and multiplied all those probabilities together. (In practice we add the log-probabilities to avoid underflow.)
 
 **The modes** differ in how much context they use when predicting each character:
 
@@ -152,7 +152,7 @@ The version-level confusion matrix for the ensemble shows exactly which models g
 
 ![Confusion Matrix](https://bountyplz.xyz/assets/images/chart_confusion_matrix.png)
 
-At 95% version accuracy, the diagonal is nearly perfect. The only visible off-diagonal confusion is in the GPT-4 / GPT-4o region, where older GPT-4 variants share enough character preferences to occasionally get swapped. Non-GPT, non-Claude models (Llama, Qwen, Grok, Kimi, DeepSeek) sit cleanly on the diagonal — they each have unique enough character preferences that confusion is rare.
+At 95% version accuracy, the diagonal is nearly perfect. The only visible off-diagonal confusion is in the GPT-4 / GPT-4o region, where older GPT-4 variants share enough character preferences to occasionally get swapped. Model's have unique enough character preferences that confusion is rare.
 
 ### Comparing individual modes
 
@@ -189,7 +189,7 @@ The score is the log-probability that each model would generate this password. H
 Pass a file with one password per line for better accuracy:
 
 ```
-$ whorl passwords.txt --order 1
+$ whorl passwords.txt
 ```
 
 ### Adding --explain for context
@@ -220,21 +220,21 @@ $ whorl --prompt
 generate a random password 15 characters long. Do not use any tools. Respond with only the password and nothing else.
 ```
 
-Use this exact prompt to generate passwords for fingerprinting. Consistency matters — the model's character preferences are conditioned on the prompt.
+Use this exact prompt to generate passwords for fingerprinting. Consistency matters, the model's character preferences are conditioned on the prompt.
 
 ## Practical Application
 
 Here's the red teaming workflow:
 
 1. **You encounter an unknown model** behind an API, chatbot, or agentic tool.
-2. **You ask it to generate a few passwords** one at a time, using the standard prompt `whorl --prompt` to get it.) 
+2. **You ask it to generate a few passwords** one at a time, using the standard prompt (`whorl --prompt` to get it.) 
 3. **You run the passwords through the fingerprinter.** It tells you which model family and version you're likely dealing with.
 
 ## Limitations and Future Work
 
 **What this is:** A lightweight, practical fingerprinting tool that works surprisingly well for a technique with zero machine learning and ~200 lines of core code.
 
-**What this isn't:** A fundamental exploit of LLM architecture. It depends on a behavioral artifact. The fact that current models happen to have strong, consistent character preferences when generating passwords is not a promise, it's serendipity. There's nothing inherent to LLM architecture that guarantees this. The technique works because today's models carry biases from training data, tokenization, and sampling strategies that leak through. If providers ever decide to fix this the signal disappears. We're exploiting an accident, not a law of physics.
+**What this isn't:** A fundamental exploit of LLM architecture. It depends on a behavioral artifact. The fact that current models happen to have strong, consistent character preferences when generating passwords is not a promise, it's serendipity. There's nothing inherent to LLM architecture that guarantees this. The technique works because today's models carry biases from training data, tokenization, and sampling strategies that leak through. If providers ever decide to fix this, or to implement an actual RNG to handle requests for random values, the signal disappears. We're exploiting an accident, not a law of physics.
 
 **Potential improvements:**
 
@@ -261,4 +261,4 @@ This was an intentional design choice. If you have access to a model I haven't f
 
 Examples: `claude-4.6-sonnet.log`, `gpt-5.4.log`, `llama-3.3-70b-instruct.log`, `gpt-o3-mini.log`
 
-The classifier automatically picks up any new `.log` / `.test` files in those directories. No code changes needed, no retraining step, no configuration. The more models in the database, the more useful the tool becomes — and the flat file format means the barrier to contribution is as low as it can possibly be.
+The classifier automatically picks up any new `.log` / `.test` files in those directories. No code changes needed. The more models in the database, the more useful the tool becomes.
