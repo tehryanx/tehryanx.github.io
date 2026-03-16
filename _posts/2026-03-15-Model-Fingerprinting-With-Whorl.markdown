@@ -5,8 +5,6 @@ date: 2026-03-15
 categories: AI, security
 ---
 
-# Whorl: Fingerprinting LLMs Through Password Generation
-
 **tl;dr** LLMs are bad password generators. They generate "random" strings with predictable, model-specific patterns. The password reveals exactly which model produced it, kind of like a [shibboleth](https://en.wikipedia.org/wiki/Shibboleth). `whorl` exploits this: Like the [whorls](https://en.wikipedia.org/wiki/Whorl_(fingerprint)) that make every human fingerprint unique, each model leaves a distinctive pattern in the text it generates. Given 5 inputs, `whorl` identifies the exact model 92% of the time. 
 
 I built a tool based on this research. Find it here: [https://github.com/tehryanx/whorl](https://github.com/tehryanx/whorl)
